@@ -4,10 +4,12 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara'
 require 'rspec'
 require 'capybara/rspec'
-require 'setup_test_database'
 
 Capybara.app = BookmarkManager
 RSpec.configure do |config|
+  config.before(:each) do
+    require 'setup_test_database'
+  end
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
