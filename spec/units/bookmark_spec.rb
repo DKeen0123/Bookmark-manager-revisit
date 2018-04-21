@@ -9,4 +9,13 @@ describe Bookmark do
       expect(bookmarks).to include("http://destroyallsoftware.com")
     end
   end
+
+  describe '.create' do
+    it 'adds a new bookmark' do
+      Bookmark.create('https://github.com/')
+      bookmarks = Bookmark.all
+      expect(bookmarks).to include("https://github.com/")
+      
+    end
+  end
 end
